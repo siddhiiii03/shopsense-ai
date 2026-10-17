@@ -1,11 +1,18 @@
 import streamlit as st
 import pandas as pd
 import joblib
+import os
 
 BASE = "/content/online_shopping_project"
-model = joblib.load(f"{BASE}/purchase_model.pkl")
-feature_names = joblib.load(f"{BASE}/feature_names.pkl")
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+model = joblib.load(
+    os.path.join(BASE_DIR, "purchase_model.pkl")
+)
+
+feature_names = joblib.load(
+    os.path.join(BASE_DIR, "feature_names.pkl")
+)
 st.set_page_config(
     page_title="ShopSense AI",
     page_icon="🛍️",
